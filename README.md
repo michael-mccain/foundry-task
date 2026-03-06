@@ -1,9 +1,15 @@
 # Kastle Foundry
+1. Create folders as seen in the [layout](#layout) section. 
+2. Put desired csv/xml files into the data folder
+3. Create a YAML file in the mapping folder. Use the [example](#example) below as a guideline for creating your YAML file.
+    - **Note**:You can verify that the YAML file is correctly formatted using tools like [YAML checker](https://yamlchecker.com/). 
+    - **Note**: For a quick refresher on YAML fundamentals checkout this [tutorial](https://yamline.com/tutorial/).
+4. 
 
 ## Layout
 * `data/` -- expected directory with csv file with data
 * `output/` -- expected directory where output files will be placed
-* `mapping/` -- required directory, expecting yaml mapping file
+* `mapping/` -- required directory, expecting YAML mapping file
 * `kastle-foundry.py` -- main script
 
 ## Example
