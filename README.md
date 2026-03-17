@@ -4,13 +4,24 @@
 3. Create a YAML file in the mapping folder. Use the [example](#example) below as a guideline for creating your YAML file.
     - **Note**:You can verify that the YAML file is correctly formatted using tools like [YAML checker](https://yamlchecker.com/). 
     - **Note**: For a quick refresher on YAML fundamentals checkout this [tutorial](https://yamline.com/tutorial/).
-4. 
-
 ## Layout
 * `data/` -- expected directory with csv file with data
 * `output/` -- expected directory where output files will be placed
 * `mapping/` -- required directory, expecting YAML mapping file
 * `kastle-foundry.py` -- main script
+# Yaml
+### Flags
+- `ref`: Default is **False**. If multiple occurrences of an instance exist in your YAML, instead of putting the same info, the ref flag to `True`. This `ref` tag can be set at any of the instances.
+
+``` yaml
+Example here
+```
+
+ - `required`: Default is **False**. 
+
+ ``` yaml
+ Example here
+ ```
 
 ## Example
 Essentially, this script will create a graph structure for a row in a csv. Currently, it assumes that there is a root node. It will then traverse the YAML file and create new nodes in the graph using the provided information.
@@ -45,3 +56,35 @@ root: # (required)
     - p: ["predicate", "predicate"] # It's possible to point to the same object with multiple predicates (rare usecase, but essentially shortcuts the use of a po: with ref construction)
       o: "uri"
 ```
+## Command Line Usage and Examples
+### Usage
+``` vim
+python kastle-foundry.py \
+    -m <mapping_file> \ 
+    -d <data_file> \
+    -o <output_dir> \
+    --namespace <namespace> \
+    [--prefix <prefix_for_namespace>] \
+    [-v] \
+    [--log-file <log_filename>]
+```
+### Example 1:
+``` vim
+python kastle-foundry.py \
+    -m example_inputs/earthquake-mapping.yaml \
+    -d example_inputs/earthquake_example_data.csv \
+    -o output/ \
+    --namespace http://stko-kwg.geog.ucsb.edu/ \
+    --prefix kwg \
+    -v \
+    --log-file kastle-foundry.log
+```
+###  Example 2:
+``` vim
+python kastle-foundry.py \
+    -m example_inputs/earthquake-mapping.yaml \
+    -d example_inputs/earthquake_example_data.csv \
+    -o output/ \
+    --namespace http://stko-kwg.geog.ucsb.edu/ \
+    --prefix kwg
+``` 
