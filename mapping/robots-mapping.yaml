@@ -6,59 +6,79 @@ metadata:
 cvs:
   - type: "robo-ont:Unit"
     uri: "robo-r:unit"
-    instances: ["grams", "kilograms", "pounds", "milimeters", "meters", "newtons", "celsius", "fahrenheit", "degrees", "degreesOfFreedom"]
+    instances:
+      [
+        "grams",
+        "kilograms",
+        "pounds",
+        "milimeters",
+        "meters",
+        "newtons",
+        "celsius",
+        "fahrenheit",
+        "degrees",
+        "degreesOfFreedom",
+      ]
   - type: "robo-ont:SpecificationKind"
     uri: "robo-r:specificationKind"
     instances: ["temperature", "weight", "force", "degreesOfFreedom", "angle"]
   - type: "robo-ont:Specification"
     uri: "robo-r:specification"
-    instances: ["workingRadius", "repeatedPositioningAccuracy", "payload", "degreesOfFreedom", "formFitGrip", "gripForce", "operatingTemperature", "stroke", "frictionGrip"]
+    instances:
+      [
+        "workingRadius",
+        "repeatedPositioningAccuracy",
+        "payload",
+        "degreesOfFreedom",
+        "formFitGrip",
+        "gripForce",
+        "operatingTemperature",
+        "stroke",
+        "frictionGrip",
+      ]
 
 # For each row, create a Robot with specified URI.
 root:
   type: ["robo-ont:SpatialThing", "robo-ont:Agent"]
   uri: "robo-r:agent"
-  varids: "Serial" # this will be a . joined string (i.e., 1.a.BA), where each element comes from the field indicated in the list
+  varids: ["Type", "Serial"] # this will be a . joined string (i.e., 1.a.BA), where each element comes from the field indicated in the list
   connections:
     - p: "robo-ont:hasName"
-      inv: "robo-ont:isNameOf" 
-      o: 
-        type: "robo-ont:Name" 
+      inv: "robo-ont:isNameOf"
+      o:
+        type: "robo-ont:Name"
         uri: "robo-r:name"
-        varids: "Serial"
-        connections:   
+        varids: ["Type", "Serial"]
+        connections:
           - p: "robo-ont:nameAsText"
-            o: 
+            o:
               datatype: "xsd:string"
               val_source: "Robot"
 
     - p: "robo-ont:hasSerial"
-      inv: "robo-ont:isSerialOf" 
-      o: 
-        type: "robo-ont:Serial" 
+      inv: "robo-ont:isSerialOf"
+      o:
+        type: "robo-ont:Serial"
         uri: "robo-r:serial"
-        varids: "Serial"
-        connections:   
+        varids: ["Serial"]
+        connections:
           - p: "robo-ont:serialAsText"
-            o: 
+            o:
               datatype: "xsd:string"
               val_source: "Serial"
 
     - p: "robo-ont:belongsToCategory"
       inv: "robo-ont:isCategoryOf"
-      o: 
+      o:
         type: ["robo-ont:Category", "robo-ont:AgentCategory"]
         uri: "robo-r:agentCategory"
-        varids: "Serial"
-        connections:  
-          - p : "robo-ont:hasCategorizationType"
-            o: 
+        connections:
+          - p: "robo-ont:hasCategorizationType"
+            o:
               type: "robo-ont:CategorizationType"
-              uri: "robot-r:categorizationType"
-              varids: "Serial"
+              uri: "robo-r:categorizationType"
               connections:
                 - p: "robo-ont:categoryTypeAsText"
-                  o: 
+                  o:
                     datatype: "xsd:string"
                     val_source: "Type"
-              

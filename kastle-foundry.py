@@ -400,7 +400,7 @@ if data_path.lower().endswith(".xml"):
         j += 1
 else:
     # Get the data out of the CSV
-    with open(data_path, "r") as data_stream:
+    with open(data_path, "r", encoding='utf-8-sig') as data_stream:
         # Load the csv
         logging.info("CSV Open success.")
         reader = csv.DictReader(data_stream)
@@ -434,6 +434,7 @@ else:
         for row in reader:
             # Create an empty graph
             graph = init_kg()
+            print(row)
             # Apply the mapping (pass by reference)
             apply_mapping(row, root, graph)
             # Serialize and output the fragment
