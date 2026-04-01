@@ -1,0 +1,64 @@
+metadata:
+  name: "Robots Mapping"
+  source_ext: "csv"
+
+# Controlled vocabularies
+cvs:
+  - type: "robo-ont:Unit"
+    uri: "robo-r:unit"
+    instances: ["grams", "kilograms", "pounds", "milimeters", "meters", "newtons", "celsius", "fahrenheit", "degrees", "degreesOfFreedom"]
+  - type: "robo-ont:SpecificationKind"
+    uri: "robo-r:specificationKind"
+    instances: ["temperature", "weight", "force", "degreesOfFreedom", "angle"]
+  - type: "robo-ont:Specification"
+    uri: "robo-r:specification"
+    instances: ["workingRadius", "repeatedPositioningAccuracy", "payload", "degreesOfFreedom", "formFitGrip", "gripForce", "operatingTemperature", "stroke", "frictionGrip"]
+
+# For each row, create a Robot with specified URI.
+root:
+  type: ["robo-ont:SpatialThing", "robo-ont:Agent"]
+  uri: "robo-r:agent"
+  varids: "Serial" # this will be a . joined string (i.e., 1.a.BA), where each element comes from the field indicated in the list
+  connections:
+    - p: "robo-ont:hasName"
+      inv: "robo-ont:isNameOf" 
+      o: 
+        type: "robo-ont:Name" 
+        uri: "robo-r:name"
+        varids: "Serial"
+        connections:   
+          - p: "robo-ont:nameAsText"
+            o: 
+              datatype: "xsd:string"
+              val_source: "Robot"
+
+    - p: "robo-ont:hasSerial"
+      inv: "robo-ont:isSerialOf" 
+      o: 
+        type: "robo-ont:Serial" 
+        uri: "robo-r:serial"
+        varids: "Serial"
+        connections:   
+          - p: "robo-ont:serialAsText"
+            o: 
+              datatype: "xsd:string"
+              val_source: "Serial"
+
+    - p: "robo-ont:belongsToCategory"
+      inv: "robo-ont:isCategoryOf"
+      o: 
+        type: ["robo-ont:Category", "robo-ont:AgentCategory"]
+        uri: "robo-r:agentCategory"
+        varids: "Serial"
+        connections:  
+          - p : "robo-ont:hasCategorizationType"
+            o: 
+              type: "robo-ont:CategorizationType"
+              uri: "robot-r:categorizationType"
+              varids: "Serial"
+              connections:
+                - p: "robo-ont:categoryTypeAsText"
+                  o: 
+                    datatype: "xsd:string"
+                    val_source: "Type"
+              
