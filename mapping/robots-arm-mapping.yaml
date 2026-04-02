@@ -51,7 +51,7 @@ cvs:
 root:
   type: ["robo-ont:SpatialThing", "robo-ont:Agent"]
   uri: "robo-r:agent"
-  varids: ["Serial", "Type", "Robot"] # this will be a . joined string (i.e., 1.a.BA), where each element comes from the field indicated in the list
+  varids: ["Serial", "Type", "Robot"]
   connections:
     - p: "robo-ont:hasName"
       inv: "robo-ont:isNameOf"
@@ -96,6 +96,7 @@ root:
       o:
         type: ["robo-ont:Capability", "robo-ont:MotionBased", "robo-ont:Reach"]
         uri: "robo-r:reach"
+        varids: ["Serial", "Type", "Robot"]
         connections:
           - p: "robo-ont:hasSpec"
             inv: "robo-ont:isSpecOf"
@@ -106,6 +107,7 @@ root:
               appellation: "workingRadius"
               connections:
                 - p: "robo-ont:hasSpecKind"
+                  inv: "robo-ont:specKindOf"
                   o:
                     type: "robo-ont:SpecificationKind"
                     uri: "robo-r:specificationKind"
@@ -130,6 +132,7 @@ root:
       o:
         type: ["robo-ont:Capability", "robo-ont:MotionBased", "robo-ont:Push"]
         uri: "robo-r:push"
+        varids: ["Serial", "Type", "Robot"]
         connections:
           - p: "robo-ont:hasSpec"
             inv: "robo-ont:isSpecOf"
@@ -140,6 +143,7 @@ root:
               appellation: "payload"
               connections:
                 - p: "robo-ont:hasSpecKind"
+                  inv: "robo-ont:specKindOf"
                   o:
                     type: "robo-ont:SpecificationKind"
                     uri: "robo-r:specificationKind"
@@ -164,6 +168,7 @@ root:
       o:
         type: ["robo-ont:Capability", "robo-ont:MotionBased", "robo-ont:Pull"]
         uri: "robo-r:pull"
+        varids: ["Serial", "Type", "Robot"]
         connections:
           - p: "robo-ont:hasSpec"
             inv: "robo-ont:isSpecOf"
@@ -174,6 +179,7 @@ root:
               appellation: "payload"
               connections:
                 - p: "robo-ont:hasSpecKind"
+                  inv: "robo-ont:specKindOf"
                   o:
                     type: "robo-ont:SpecificationKind"
                     uri: "robo-r:specificationKind"
@@ -203,6 +209,7 @@ root:
             "robo-ont:ThermalResistant",
           ]
         uri: "robo-r:thermalResistant"
+        varids: ["Serial", "Type", "Robot"]
         connections:
           - p: "robo-ont:hasSpec"
             inv: "robo-ont:isSpecOf"
@@ -213,6 +220,7 @@ root:
               appellation: "operatingTemperature"
               connections:
                 - p: "robo-ont:hasSpecKind"
+                  inv: "robo-ont:specKindOf"
                   o:
                     type: "robo-ont:SpecificationKind"
                     uri: "robo-r:specificationKind"
@@ -248,6 +256,7 @@ root:
             "robo-ont:ThermalResistant",
           ]
         uri: "robo-r:thermalResistant"
+        varids: ["Serial", "Type", "Robot"]
         connections:
           - p: "robo-ont:hasSpec"
             inv: "robo-ont:isSpecOf"
@@ -258,6 +267,7 @@ root:
               appellation: "operatingTemperature"
               connections:
                 - p: "robo-ont:hasSpecKind"
+                  inv: "robo-ont:specKindOf"
                   o:
                     type: "robo-ont:SpecificationKind"
                     uri: "robo-r:specificationKind"
