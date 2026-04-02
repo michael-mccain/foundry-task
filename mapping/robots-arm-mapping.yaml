@@ -101,16 +101,21 @@ root:
             inv: "robo-ont:isSpecOf"
             o:
               type: "robo-ont:Specification"
-              varids: ["Serial", "Type", "Robot"]
               uri: "robo-r:specification"
+              varids: ["Serial", "Type", "Robot"]
+              appellation: "workingRadius"
               connections:
                 - p: "robo-ont:hasSpecKind"
-                  o: "robo-r:specificationKind.operatingRange"
+                  o:
+                    type: "robo-ont:SpecificationKind"
+                    uri: "robo-r:specificationKind"
+                    varids: ["Serial", "Type", "Robot"]
+                    appellation: "operatingRange"
                 - p: "robo-ont:hasThreshold"
                   o:
                     type: ["robo-ont:Threshold", "robo-ont:UpperThreshold"]
                     uri: "robo-r:upperThreshold"
-                    varids: ["Serial", "Type", "Robot"]
+                    varids: ["Serial", "Type", "Robot", "Operating Range (mm)"]
                     connections:
                       - p: "robo-ont:hasValue"
                         o:
@@ -118,3 +123,161 @@ root:
                           val_source: "Operating Range (mm)"
                       - p: "robo-ont:hasUnit"
                         o: "robo-r:hasUnit.milimeters"
+
+    # Capability - MotionBased - Push
+    - p: "robo-ont:hasCapability"
+      inv: "robo-ont:capabilityOf"
+      o:
+        type: ["robo-ont:Capability", "robo-ont:MotionBased", "robo-ont:Push"]
+        uri: "robo-r:push"
+        connections:
+          - p: "robo-ont:hasSpec"
+            inv: "robo-ont:isSpecOf"
+            o:
+              type: "robo-ont:Specification"
+              uri: "robo-r:specification"
+              varids: ["Serial", "Type", "Robot"]
+              appellation: "payload"
+              connections:
+                - p: "robo-ont:hasSpecKind"
+                  o:
+                    type: "robo-ont:SpecificationKind"
+                    uri: "robo-r:specificationKind"
+                    varids: ["Serial", "Type", "Robot"]
+                    appellation: "weight"
+                - p: "robo-ont:hasThreshold"
+                  o:
+                    type: ["robo-ont:Threshold", "robo-ont:UpperThreshold"]
+                    uri: "robo-r:upperThreshold"
+                    varids: ["Serial", "Type", "Robot", "Max Payload (Grams)"]
+                    connections:
+                      - p: "robo-ont:hasValue"
+                        o:
+                          datatype: "xsd:double"
+                          val_source: "Max Payload (Grams)"
+                      - p: "robo-ont:hasUnit"
+                        o: "robo-r:hasUnit.grams"
+
+    # Capability - MotionBased - Pull
+    - p: "robo-ont:hasCapability"
+      inv: "robo-ont:capabilityOf"
+      o:
+        type: ["robo-ont:Capability", "robo-ont:MotionBased", "robo-ont:Pull"]
+        uri: "robo-r:pull"
+        connections:
+          - p: "robo-ont:hasSpec"
+            inv: "robo-ont:isSpecOf"
+            o:
+              type: "robo-ont:Specification"
+              uri: "robo-r:specification"
+              varids: ["Serial", "Type", "Robot"]
+              appellation: "payload"
+              connections:
+                - p: "robo-ont:hasSpecKind"
+                  o:
+                    type: "robo-ont:SpecificationKind"
+                    uri: "robo-r:specificationKind"
+                    varids: ["Serial", "Type", "Robot"]
+                    appellation: "weight"
+                - p: "robo-ont:hasThreshold"
+                  o:
+                    type: ["robo-ont:Threshold", "robo-ont:UpperThreshold"]
+                    uri: "robo-r:upperThreshold"
+                    varids: ["Serial", "Type", "Robot", "Max Payload (Grams)"]
+                    connections:
+                      - p: "robo-ont:hasValue"
+                        o:
+                          datatype: "xsd:double"
+                          val_source: "Max Payload (Grams)"
+                      - p: "robo-ont:hasUnit"
+                        o: "robo-r:hasUnit.grams"
+
+    # Capability - ResistanceBased - ThermalResistant - Max
+    - p: "robo-ont:hasCapability"
+      inv: "robo-ont:capabilityOf"
+      o:
+        type:
+          [
+            "robo-ont:Capability",
+            "robo-ont:MotionBased",
+            "robo-ont:ThermalResistant",
+          ]
+        uri: "robo-r:thermalResistant"
+        connections:
+          - p: "robo-ont:hasSpec"
+            inv: "robo-ont:isSpecOf"
+            o:
+              type: "robo-ont:Specification"
+              uri: "robo-r:specification"
+              varids: ["Serial", "Type", "Robot"]
+              appellation: "operatingTemperature"
+              connections:
+                - p: "robo-ont:hasSpecKind"
+                  o:
+                    type: "robo-ont:SpecificationKind"
+                    uri: "robo-r:specificationKind"
+                    varids: ["Serial", "Type", "Robot"]
+                    appellation: "temperature"
+                - p: "robo-ont:hasThreshold"
+                  o:
+                    type: ["robo-ont:Threshold", "robo-ont:UpperThreshold"]
+                    uri: "robo-r:upperThreshold"
+                    varids:
+                      [
+                        "Serial",
+                        "Type",
+                        "Robot",
+                        "Max Operating Temperature (Celsius)",
+                      ]
+                    connections:
+                      - p: "robo-ont:hasValue"
+                        o:
+                          datatype: "xsd:double"
+                          val_source: "Max Operating Temperature (Celsius)"
+                      - p: "robo-ont:hasUnit"
+                        o: "robo-r:hasUnit.celsius"
+
+    # Capability - ResistanceBased - ThermalResistant - Max
+    - p: "robo-ont:hasCapability"
+      inv: "robo-ont:capabilityOf"
+      o:
+        type:
+          [
+            "robo-ont:Capability",
+            "robo-ont:MotionBased",
+            "robo-ont:ThermalResistant",
+          ]
+        uri: "robo-r:thermalResistant"
+        connections:
+          - p: "robo-ont:hasSpec"
+            inv: "robo-ont:isSpecOf"
+            o:
+              type: "robo-ont:Specification"
+              uri: "robo-r:specification"
+              varids: ["Serial", "Type", "Robot"]
+              appellation: "operatingTemperature"
+              connections:
+                - p: "robo-ont:hasSpecKind"
+                  o:
+                    type: "robo-ont:SpecificationKind"
+                    uri: "robo-r:specificationKind"
+                    varids: ["Serial", "Type", "Robot"]
+                    appellation: "temperature"
+                - p: "robo-ont:hasThreshold"
+                  o:
+                    type: ["robo-ont:Threshold", "robo-ont:lowerThreshold"]
+                    uri: "robo-r:lowerThreshold"
+                    varids:
+                      [
+                        "Serial",
+                        "Type",
+                        "Robot",
+                        "Min Operating Temperature (Celsius)",
+                      ]
+                    connections:
+                      - p: "robo-ont:hasValue"
+                        o:
+                          datatype: "xsd:double"
+                          val_source: "Min Operating Temperature (Celsius)"
+                      - p: "robo-ont:hasUnit"
+                        o: "robo-r:hasUnit.celsius"
