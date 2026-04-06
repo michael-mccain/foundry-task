@@ -53,27 +53,27 @@ root:
   uri: "robo-r:agent"
   varids: ["Serial", "Type", "Robot"]
   connections:
-    - p: "robo-ont:hasName"
-      inv: "robo-ont:isNameOf"
+    - p: "robo-ont:hasIdentifier"
+      inv: "robo-ont:identifierOf"
       o:
-        type: "robo-ont:Name"
+        type: ["robo-ont:Identifier", "robo-ont:Name"]
         uri: "robo-r:name"
         varids: ["Serial", "Type", "Robot"]
         connections:
-          - p: "robo-ont:nameAsText"
+          - p: "robo-ont:identifierAsText"
             o:
               datatype: "xsd:string"
               val_source: "Robot"
 
     # Serial
-    - p: "robo-ont:hasSerial"
-      inv: "robo-ont:isSerialOf"
+    - p: "robo-ont:hasIdentifier"
+      inv: "robo-ont:identifierOf"
       o:
-        type: "robo-ont:Serial"
+        type: ["robo-ont:Identifier", "robo-ont:Serial"]
         uri: "robo-r:serial"
         varids: ["Serial", "Type", "Robot"]
         connections:
-          - p: "robo-ont:serialAsText"
+          - p: "robo-ont:identifierAsText"
             o:
               datatype: "xsd:string"
               val_source: "Serial"
